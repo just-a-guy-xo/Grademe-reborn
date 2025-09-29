@@ -1,0 +1,10 @@
+Assignment name  : ft_strrev
+Expected files   : ft_strrev.c
+Allowed functions: None
+--------------------------------------------------------------------------------
+
+Write a function that reverses a string (in place) and returns the pointer.
+
+Your function must be declared as follows:
+
+char *ft_strrev(char *str);

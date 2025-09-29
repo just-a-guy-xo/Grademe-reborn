@@ -1,0 +1,6 @@
+$>./ft_strcapitalize "salut, comment tu vas ? 42mots quarante-deux; cinquante+et+un"
+salut, Comment Tu Vas ? 42mots Quarante-Deux; Cinquante+Et+Un
+$>./ft_strcapitalize "HELLO WORLD"
+Hello World
+$>./ft_strcapitalize "already Capitalized"
+already Capitalized

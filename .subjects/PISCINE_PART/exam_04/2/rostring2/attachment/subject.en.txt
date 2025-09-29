@@ -1,0 +1,7 @@
+Assignment name  : rostring2
+Expected files   : rostring2.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program that takes a string and rotates the first word to the end,
+separated by a single space. Trim spaces/tabs. End with newline.

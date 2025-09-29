@@ -1,0 +1,18 @@
+Assignment name  : ft_split_whitespaces
+Expected files   : ft_split_whitespaces.c
+Allowed functions: malloc
+--------------------------------------------------------------------------------
+
+Write a function that takes a string, splits it into words separated by
+whitespaces, and returns a NULL-terminated array with each word stored in a
+freshly allocated string.
+
+A "word" is a section of the string delimited by spaces, tabs or newline
+characters. The returned array must be terminated by a NULL pointer.
+
+Your function must be declared as follows:
+
+char	**ft_split_whitespaces(char *str);
+
+If memory allocation fails at any point, the function must return NULL. Empty
+strings should result in an array containing only a NULL pointer.

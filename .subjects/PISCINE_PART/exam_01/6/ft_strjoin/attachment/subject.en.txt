@@ -1,0 +1,15 @@
+Assignment name  : ft_strjoin
+Expected files   : ft_strjoin.c
+Allowed functions: malloc
+--------------------------------------------------------------------------------
+
+Write a function that concatenates an array of strings into a single string,
+placing the separator string between each pair of strings. The resulting string
+must be freshly allocated and NUL-terminated.
+
+Your function must be declared as follows:
+
+char	*ft_strjoin(int size, char **strs, char *sep);
+
+- If size is 0, the function must return an empty string allocated with malloc.
+- If memory allocation fails, the function must return NULL.

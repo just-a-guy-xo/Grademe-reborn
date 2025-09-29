@@ -1,0 +1,12 @@
+Assignment name  : ft_sort_params
+Expected files   : ft_sort_params.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program that takes strings as arguments, sorts them in ascending order
+and displays them line by line on the standard output.
+
+The comparison should be done using the ASCII order. Duplicate strings must be
+kept and displayed each time.
+
+If no argument is given, the program displays nothing.

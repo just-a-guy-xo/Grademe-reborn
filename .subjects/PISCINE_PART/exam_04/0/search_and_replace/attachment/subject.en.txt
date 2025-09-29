@@ -1,0 +1,11 @@
+Assignment name  : search_and_replace
+Expected files   : search_and_replace.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program that takes three arguments: a string, a single character to
+search for, and a single character to replace it with.
+
+If the last two arguments are not single characters, print only a newline.
+Replace every occurrence of the first char with the second in the string, then
+print the result followed by a newline.

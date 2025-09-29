@@ -1,0 +1,9 @@
+Assignment name  : ft_itoa
+Expected files   : ft_itoa.c
+Allowed functions: malloc
+--------------------------------------------------------------------------------
+
+Write a function that allocates (with malloc) and returns a string representing
+the integer received as an argument. Handle negatives. Return NULL on error.
+
+char	*ft_itoa(int n);

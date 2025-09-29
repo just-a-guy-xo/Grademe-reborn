@@ -1,0 +1,10 @@
+$>./ft_sort_params "banana" "apple" "cherry"
+apple
+banana
+cherry
+$>./ft_sort_params "b" "a" "a"
+a
+a
+b
+$>./ft_sort_params
+$>

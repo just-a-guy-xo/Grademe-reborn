@@ -1,0 +1,10 @@
+Assignment name  : alpha_mirror
+Expected files   : alpha_mirror.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program that takes a string and displays it, replacing each alphabetical
+character by the one in the mirror position in the alphabet.
+
+‘a’ becomes ‘z’, ‘b’ becomes ‘y’, ‘A’ becomes ‘Z’, etc.
+Non-alpha characters remain unchanged. End with a newline.

@@ -1,0 +1,18 @@
+Assignment name  : ft_sqrt
+Expected files   : ft_sqrt.c
+Allowed functions: None
+--------------------------------------------------------------------------------
+
+Write a function that returns the integer square root of a number. If the
+number has an integer square root, return it. Otherwise, return 0.
+
+Your function must be declared as follows:
+
+int	ft_sqrt(int nb);
+
+Example:
+
+$> ./ft_sqrt 81 | cat -e
+9$
+$> ./ft_sqrt 5 | cat -e
+0$

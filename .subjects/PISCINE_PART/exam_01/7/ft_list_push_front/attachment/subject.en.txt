@@ -1,0 +1,25 @@
+Assignment name  : ft_list_push_front
+Expected files   : ft_list_push_front.c, ft_list.h
+Allowed functions: malloc
+--------------------------------------------------------------------------------
+
+Write a function that adds a new element at the beginning of a list.
+
+The list will be made of elements of type:
+
+typedef struct		s_list
+{
+	void			*data;
+	struct s_list	*next;
+}t_list;
+
+Your function must be declared as follows:
+
+void	ft_list_push_front(t_list **begin_list, void *data);
+
+The function must create a new element using malloc, assign its data field, link
+it at the beginning of the list and update *begin_list. If malloc fails, the
+function must leave the list unchanged.
+
+You must also provide the header file ft_list.h that contains the definition of
+t_list and the prototype of ft_list_push_front.

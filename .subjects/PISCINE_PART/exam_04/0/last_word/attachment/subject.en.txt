@@ -1,0 +1,9 @@
+Assignment name  : last_word
+Expected files   : last_word.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program that takes a string and displays its last word, followed by a
+newline. A word is a section of string delimited by spaces/tabs or the
+beginning/end of the string. If the number of parameters is not 1, display
+only a newline.

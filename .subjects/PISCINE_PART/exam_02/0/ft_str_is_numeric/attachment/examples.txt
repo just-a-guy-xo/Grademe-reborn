@@ -1,0 +1,6 @@
+$>./ft_str_is_numeric "0123456789"
+1
+$>./ft_str_is_numeric "123 456"
+0
+$>./ft_str_is_numeric ""
+1

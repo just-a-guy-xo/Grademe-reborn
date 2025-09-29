@@ -1,0 +1,21 @@
+Assignment name  : ft_div_mod
+Expected files   : ft_div_mod.c
+Allowed functions: None
+--------------------------------------------------------------------------------
+
+Write a function ft_div_mod that takes two integers and two pointers to int (div
+and mod) as parameters. The function should store the result of the integer
+division of the two integers in the int pointed to by div. The remainder of the
+division should be stored in the int pointed to by mod.
+
+Your function must be declared as follows:
+
+void	ft_div_mod(int a, int b, int *div, int *mod);
+
+If b is equal to 0, the function should store 0 in both integers pointed to by
+div and mod.
+
+Example:
+
+$> ./ft_div_mod 13 5 | cat -e
+2 3$

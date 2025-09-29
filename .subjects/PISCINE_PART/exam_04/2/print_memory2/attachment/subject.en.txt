@@ -1,0 +1,10 @@
+Assignment name  : print_memory2
+Expected files   : print_memory2.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Re-implement a memory dump function printing N bytes starting at a given
+address. For each line, print 16 bytes as hex pairs and printable ASCII (or '.').
+
+Prototype:
+void	print_memory2(const void *addr, size_t size);

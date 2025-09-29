@@ -1,0 +1,19 @@
+Assignment name  : ft_putnbr
+Expected files   : ft_putnbr.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a function that displays an integer passed as parameter. The function
+must be able to display all possible values within the range of a signed
+32-bit integer.
+
+Your function must be declared as follows:
+
+void	ft_putnbr(int nb);
+
+Example:
+
+$> ./ft_putnbr 42 | cat -e
+42$
+$> ./ft_putnbr -2147483648 | cat -e
+-2147483648$

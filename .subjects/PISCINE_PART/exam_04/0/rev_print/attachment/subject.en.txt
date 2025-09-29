@@ -1,0 +1,12 @@
+Assignment name  : rev_print
+Expected files   : rev_print.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program that takes a string as an argument and prints it reversed
+followed by a newline. If there is no argument, just print a newline.
+
+Example:
+$> ./rev_print "abc" | cat -e
+cba$
+$>

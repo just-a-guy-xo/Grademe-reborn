@@ -1,0 +1,20 @@
+Assignment name  : ft_print_comb
+Expected files   : ft_print_comb.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a function that displays all different combinations of three different
+digits in ascending order, listed by ascending order.
+
+Only the smallest combination of digits should be printed first. The numbers
+must be separated by a comma followed by a space, except for the last
+combination which should be followed by a newline.
+
+Your function must be declared as follows:
+
+void	ft_print_comb(void);
+
+Example:
+
+$> ./ft_print_comb | cat -e
+012, 013, 014, ..., 789$
