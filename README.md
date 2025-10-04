@@ -38,12 +38,15 @@ make launch
 - Settings simplified to the two useful options: replay solved exercises and enable cheat commands.
 - `grademe` now prints the waiting message only once while the grader runs.
 - Telemetry hooks remain disabled—no data leaves your machine.
+- Piscine exam selector now lists every available week with level ranges and difficulty tiers.
+- Free of VIP promos; everything needed is bundled out of the box.
 
 ---
 
 ## Feature highlights
 
 - Randomised Piscine subjects for every level.
+- At-a-glance menu table showing which weeks are beginner-friendly versus advanced/expert.
 - Built-in wait timers between grademe requests to mimic the real exam.
 - Automatic grading, even without an internet connection.
 - Tracebacks saved after each failure so you can review what happened.
