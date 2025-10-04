@@ -1,16 +1,5 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    tester.sh                                          :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: just-a-guy <just-a-guy@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/06/20 02:26:11 by just-a-guy           #+#    #+#              #
-#    Updated: 2022/09/01 23:56:03 by just-a-guy          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-FILE='union.c'
+FILE='hello.c'
+ASSIGN='hello/hello.c'
 
 index=0
 
@@ -25,7 +14,7 @@ gcc -o source $FILE
 rm source
 cd ../../rendu
 {
-gcc -o final $FILE
+gcc -o final $ASSIGN
 }  &>../.system/grading/traceback
 {
 ./final | cat -e > finalexam        #TESTING
@@ -52,12 +41,12 @@ rm finalexam
 
 
 gcc -o source $FILE
-./source zpadinton "paqefwtdjetyiytjneytjoeyjnejeyj" | cat -e > sourcexam    #TESTING
+./source "abc" | cat -e > sourcexam    #TESTING
 rm source
 cd ../../rendu
 {
-gcc -o final $FILE
-./final zpadinton "paqefwtdjetyiytjneytjoeyjnejeyj" | cat -e > finalexam     #TESTING
+gcc -o final $ASSIGN
+./final "abc" | cat -e > finalexam     #TESTING
 mv finalexam ../.system/grading/
 rm final
 }  &>/dev/null
@@ -75,179 +64,6 @@ then
 		fi
 		echo "-------" >> traceback
 fi
-rm finalexam
-
-
-
-gcc -o source $FILE
-./source ddf6vewg64f gtwthgdwthdwfteewhrtag6h4ffdhsd | cat -e > sourcexam    #TESTING
-rm source
-cd ../../rendu
-{
-gcc -o final $FILE
-./final ddf6vewg64f gtwthgdwthdwfteewhrtag6h4ffdhsd | cat -e > finalexam     #TESTING
-mv finalexam ../.system/grading/
-rm final
-}  &>/dev/null
-cd ../.system/grading
-DIFF=$(diff sourcexam finalexam)
-if [ "$DIFF" != "" ]
-then
-		index=$(($index + 1))
-		cat sourcexam >> traceback
-		if [ -e finalexam ]
-		then
-		cat finalexam >> traceback
-		else
-		echo "" >> traceback
-		fi
-		echo "-------" >> traceback
-fi
-rm finalexam
-
-
-
-
-gcc -o source $FILE
-./source "rien" "cette phrase ne cache rien" | cat -e > sourcexam    #TESTING
-rm source
-cd ../../rendu
-{
-gcc -o final $FILE
-./final "rien" "cette phrase ne cache rien" | cat -e > finalexam     #TESTING
-mv finalexam ../.system/grading/
-rm final
-}  &>/dev/null
-cd ../.system/grading
-DIFF=$(diff sourcexam finalexam)
-if [ "$DIFF" != "" ]
-then
-		index=$(($index + 1))
-		cat sourcexam >> traceback
-		if [ -e finalexam ]
-		then
-		cat finalexam >> traceback
-		else
-		echo "" >> traceback
-		fi
-		echo "-------" >> traceback
-fi
-rm finalexam
-
-
-
-
-gcc -o source $FILE
-./source "rien" | cat -e > sourcexam    #TESTING
-rm source
-cd ../../rendu
-{
-gcc -o final $FILE
-./final "rien" | cat -e > finalexam     #TESTING
-mv finalexam ../.system/grading/
-rm final
-}  &>/dev/null
-cd ../.system/grading
-DIFF=$(diff sourcexam finalexam)
-if [ "$DIFF" != "" ]
-then
-		index=$(($index + 1))
-		cat sourcexam >> traceback
-		if [ -e finalexam ]
-		then
-		cat finalexam >> traceback
-		else
-		echo "" >> traceback
-		fi
-		echo "-------" >> traceback
-fi
-rm finalexam
-
-gcc -o source $FILE
-./source "a" "b" | cat -e > sourcexam    #TESTING
-rm source
-cd ../../rendu
-{
-gcc -o final $FILE
-./final "a" "b" | cat -e > finalexam     #TESTING
-mv finalexam ../.system/grading/
-rm final
-}  &>/dev/null
-cd ../.system/grading
-DIFF=$(diff sourcexam finalexam)
-if [ "$DIFF" != "" ]
-then
-		index=$(($index + 1))
-		cat sourcexam >> traceback
-		if [ -e finalexam ]
-		then
-		cat finalexam >> traceback
-		else
-		echo "" >> traceback
-		fi
-		echo "-------" >> traceback
-fi
-rm finalexam
-
-gcc -o source $FILE
-./source "  lorem,ipsum  " "oooo" | cat -e > sourcexam    #TESTING
-rm source
-cd ../../rendu
-{
-gcc -o final $FILE
-./final "  lorem,ipsum  " "oooo" | cat -e > finalexam     #TESTING
-mv finalexam ../.system/grading/
-rm final
-}  &>/dev/null
-cd ../.system/grading
-DIFF=$(diff sourcexam finalexam)
-if [ "$DIFF" != "" ]
-then
-		index=$(($index + 1))
-		cat sourcexam >> traceback
-		if [ -e finalexam ]
-		then
-		cat finalexam >> traceback
-		else
-		echo "" >> traceback
-		fi
-		echo "-------" >> traceback
-fi
-rm finalexam
-
-gcc -o source $FILE
-./source "this        ...       is sparta, then again, maybe    not" "lol" | cat -e > sourcexam    #TESTING
-rm source
-cd ../../rendu
-{
-gcc -o final $FILE
-./final "this        ...       is sparta, then again, maybe    not" "lol" | cat -e > finalexam     #TESTING
-mv finalexam ../.system/grading/
-rm final
-}  &>/dev/null
-cd ../.system/grading
-DIFF=$(diff sourcexam finalexam)
-if [ "$DIFF" != "" ]
-then
-		index=$(($index + 1))
-		cat sourcexam >> traceback
-		if [ -e finalexam ]
-		then
-		cat finalexam >> traceback
-		else
-		echo "" >> traceback
-		fi
-		echo "-------" >> traceback
-fi
-rm finalexam
-
-
-
-
-
-
-
-
 
 
 

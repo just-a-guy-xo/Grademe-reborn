@@ -305,22 +305,49 @@ int exam::piscine_menu(void)
                   << WHITE << BOLD << "    |  Piscine PART  |" << std::endl
                   << std::endl;
 
+        const int column_exam_width = 12;
+        const int column_levels_width = 22;
+        const int column_difficulty_width = 16;
+        const std::string border = "    +" + std::string(column_exam_width + 2, '-') + "+" + std::string(column_levels_width + 2, '-') + "+" + std::string(column_difficulty_width + 2, '-') + "+";
+
+        std::ios::fmtflags previous_flags = std::cout.flags();
+        char previous_fill = std::cout.fill();
+        std::cout << std::left;
+
+        std::cout << WHITE << BOLD << border << std::endl;
+        std::cout << "    | " << std::setw(column_exam_width) << "Exam"
+                  << " | " << std::setw(column_levels_width) << "Levels"
+                  << " | " << std::setw(column_difficulty_width) << "Difficulty"
+                  << " |" << std::endl;
+        std::cout << border << std::endl;
+
         for (int exam_number : exams)
         {
-            std::cout << LIME << "            " << exam_number << RESET << WHITE << BOLD << std::endl
-                      << "       EXAM WEEK 0" << exam_number << std::endl
-                      << std::endl;
+            piscine_exam_info info = fetch_piscine_exam_info(exam_number);
+            std::string exam_label = std::string("Week ") + (exam_number < 10 ? "0" : "") + std::to_string(exam_number);
+            std::string level_display = piscine_level_display(info);
+            std::string difficulty = piscine_difficulty_label(exam_number, info);
+
+            std::cout << "    | " << std::setw(column_exam_width) << exam_label
+                      << " | " << std::setw(column_levels_width) << level_display
+                      << " | " << std::setw(column_difficulty_width) << difficulty
+                      << " |" << std::endl;
         }
 
-        std::cout << RESET << BOLD << "     \\ ------------ /" << std::endl
-                  << std::endl
+        std::cout << border << std::endl;
+        std::cout.flags(previous_flags);
+        std::cout.fill(previous_fill);
+
+        std::cout << RESET << BOLD << std::endl
+                  << "    Levels column shows the subject level range and folder count." << std::endl
+                  << "    Difficulty is estimated from the highest level available." << std::endl
                   << std::endl;
 
         if (invalid)
             std::cout << BOLD << RED << "    Invalid choice, please try again." << RESET << std::endl
                       << std::endl;
 
-        std::cout << "    Enter your choice:" << std::endl
+        std::cout << WHITE << BOLD << "    Enter the week number (0 to go back):" << RESET << std::endl
                   << "            ";
         if (!std::getline(std::cin, choice))
             sigd();

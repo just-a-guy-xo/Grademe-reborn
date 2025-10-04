@@ -133,6 +133,102 @@ std::vector<int> exam::available_piscine_exams(void) const
     return exams;
 }
 
+exam::piscine_exam_info exam::fetch_piscine_exam_info(int exam_number) const
+{
+    piscine_exam_info info;
+    info.min_level = INT_MAX;
+    info.max_level = INT_MIN;
+    info.count = 0;
+
+    std::string folder = ".subjects/PISCINE_PART/exam_";
+    if (exam_number < 10)
+        folder += "0";
+    folder += std::to_string(exam_number) + "/";
+
+    DIR *dir = opendir(folder.c_str());
+    if (!dir)
+    {
+        info.min_level = 0;
+        info.max_level = -1;
+        return info;
+    }
+
+    struct dirent *entry;
+    while ((entry = readdir(dir)) != NULL)
+    {
+        std::string name = entry->d_name;
+        if (!name.empty() && std::all_of(name.begin(), name.end(), [](unsigned char c) { return std::isdigit(c); }))
+        {
+            try
+            {
+                int level_value = std::stoi(name);
+                info.min_level = std::min(info.min_level, level_value);
+                info.max_level = std::max(info.max_level, level_value);
+                info.count++;
+            }
+            catch (const std::exception &)
+            {
+                // ignore malformed directory names
+            }
+        }
+    }
+    closedir(dir);
+
+    if (info.count == 0)
+    {
+        info.min_level = 0;
+        info.max_level = -1;
+    }
+
+    return info;
+}
+
+std::string exam::piscine_level_display(const piscine_exam_info &info) const
+{
+    if (info.count == 0)
+        return "n/a";
+
+    std::ostringstream oss;
+    if (info.min_level == info.max_level)
+        oss << info.min_level;
+    else
+        oss << info.min_level << "-" << info.max_level;
+    oss << " (" << info.count << " lvl";
+    if (info.count > 1)
+        oss << "s";
+    oss << ")";
+    return oss.str();
+}
+
+std::string exam::piscine_difficulty_label(int exam_number, const piscine_exam_info &info) const
+{
+    if (info.count == 0)
+        return "Unknown";
+    switch (exam_number)
+    {
+    case 1:
+        return "Beginner";
+    case 2:
+        return "Intermediate";
+    case 3:
+        return "Advanced";
+    case 4:
+        return "Expert";
+    default:
+        break;
+    }
+
+    if (info.max_level <= 2)
+        return "Beginner";
+    if (info.max_level <= 4)
+        return "Intermediate";
+    if (info.max_level <= 6)
+        return "Advanced";
+    if (info.max_level <= 8)
+        return "Expert";
+    return "Master";
+}
+
 void exam::explanation(void)
 {
     std::string enter;
@@ -163,14 +259,6 @@ void exam::explanation(void)
               << "             - Name of exercise, fail or success, current assignement and level.\n"
               << std::endl << std::endl;
 
-    std::cout << "\x1B[32m      🚀 Grademe VIP\e[97m\e[1m: (0€ - 3€)" << std::endl;
-    std::cout << "         You can become VIP by contributing to the repo, making a \x1B[35mPull Request\e[97m\e[1m\n"
-              << "             - Instant correction with new \x1B[35mgradenow\e[97m\e[1m command\n"
-              << "             - Force an exercise to succeed with \x1B[35mforce_success\e[97m\e[1m command\n"
-              << "             - Having the \x1B[35mSAME display condition\e[97m\e[1m as 42 school\n"
-              << "               More coming...\n"
-              << std::endl << std::endl;
-    
     std::cout << RED << "     ‼️  DICLAIMER" << WHITE << std::endl;
     std::cout << "         This program is " << RED << "not" << WHITE << " the real 42 exam and is " << RED << "not" << WHITE << " made by 42." << std::endl;
     std::cout << "         It is created by a student, free and open-source." << std::endl << std::endl;

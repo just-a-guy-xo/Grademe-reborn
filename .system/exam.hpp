@@ -22,6 +22,7 @@
 #include <sstream>
 #include <algorithm>
 #include <cctype>
+#include <climits>
 #include <readline/readline.h>
 #include <readline/history.h>
 
@@ -103,6 +104,17 @@ private:
     int piscine_menu(void);
     int stud_or_swim(void);
     std::vector<int> available_piscine_exams(void) const;
+
+    struct piscine_exam_info
+    {
+        int min_level;
+        int max_level;
+        int count;
+    };
+
+    piscine_exam_info fetch_piscine_exam_info(int exam_number) const;
+    std::string piscine_level_display(const piscine_exam_info &info) const;
+    std::string piscine_difficulty_label(int exam_number, const piscine_exam_info &info) const;
 
     bool setting_dse;
     bool setting_dcc;
