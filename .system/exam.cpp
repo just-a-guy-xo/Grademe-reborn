@@ -101,6 +101,38 @@ void exam::set_max_time(void)
     }
 }
 
+std::vector<int> exam::available_piscine_exams(void) const
+{
+    std::vector<int> exams;
+    DIR *dir = opendir(".subjects/PISCINE_PART");
+    if (!dir)
+        return exams;
+    struct dirent *entry;
+    while ((entry = readdir(dir)) != NULL)
+    {
+        std::string name = entry->d_name;
+        if (name.rfind("exam_0", 0) == 0 && name.length() > 6)
+        {
+            std::string number = name.substr(6);
+            if (!number.empty() && std::all_of(number.begin(), number.end(), [](unsigned char c) { return std::isdigit(c); }))
+            {
+                try
+                {
+                    exams.push_back(std::stoi(number));
+                }
+                catch (const std::exception &)
+                {
+                    // ignore malformed directory names
+                }
+            }
+        }
+    }
+    closedir(dir);
+    std::sort(exams.begin(), exams.end());
+    exams.erase(std::unique(exams.begin(), exams.end()), exams.end());
+    return exams;
+}
+
 void exam::explanation(void)
 {
     std::string enter;

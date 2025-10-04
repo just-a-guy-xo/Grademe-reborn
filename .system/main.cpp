@@ -117,14 +117,6 @@ void exam::exam_prompt(void)
         {
             exam_help();
         }
-        else if (input == "repo_git")
-        {
-            std::cout << "Opening git repo..." << std::endl;
-            if (is_linux)
-                std::system("xdg-open http://git.grademe.fr");
-            else
-                std::system("open http://git.grademe.fr");
-        }
         else if (input == "remove_grade_time")
         {
             std::cout << "Time between grading is now removed for this exam" << std::endl;

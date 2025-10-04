@@ -47,7 +47,6 @@ void exam::exam_help()
     std::cout << LIME << "    status:" << RESET << " display information about the exam" << std::endl;
     std::cout << LIME << "    finish:" << RESET << " exit the exam" << std::endl;
     std::cout << LIME << "    grademe:" << RESET << " grade your exercise" << std::endl;
-    std::cout << LIME << "    repo_git:" << RESET << " visit github repo" << std::endl;
     std::cout << "See github repo to find some more 'cheat' command" << std::endl << std::endl;
     std::cout << BOLD << LIME << "VIP MENU (contribute): " << RESET << std::endl;
     std::cout << LIME << "    force_success:" << RESET << " force a ex to success" << std::endl;
@@ -285,8 +284,17 @@ void exam::settings_menu(void)
 // ==> Display the menu for the piscine part
 int exam::piscine_menu(void)
 {
-    std::string choice = "-2";
-    while (choice == "-1" || choice == "-2")
+    std::vector<int> exams = available_piscine_exams();
+    if (exams.empty())
+    {
+        // Fallback to historical defaults if directory scan fails
+        exams.push_back(1);
+        exams.push_back(2);
+    }
+
+    std::string choice = "";
+    bool invalid = false;
+    while (true)
     {
         system("clear");
         std::cout << WHITE << BOLD << "         42EXAM " << std::endl
@@ -294,26 +302,39 @@ int exam::piscine_menu(void)
         std::cout << LIME << BOLD << "            " << RESET << std::endl
                   << std::endl
                   << LIME << "            •           " << std::endl
-                  << WHITE << BOLD << "    |  Piscine PART  |" << std::endl;
-        std::cout << std::endl
-                  << LIME << "            1" << RESET << WHITE << BOLD << std::endl
-                  << "       EXAM WEEK 01" << std::endl;
-        std::cout << std::endl
-                  << LIME << "            2" << RESET << WHITE << BOLD << std::endl
-                  << "       EXAM WEEK 02" << std::endl;
-        std::cout << RESET << BOLD << std::endl
-                  << "     \\ ------------ /" << std::endl
+                  << WHITE << BOLD << "    |  Piscine PART  |" << std::endl
+                  << std::endl;
+
+        for (int exam_number : exams)
+        {
+            std::cout << LIME << "            " << exam_number << RESET << WHITE << BOLD << std::endl
+                      << "       EXAM WEEK 0" << exam_number << std::endl
+                      << std::endl;
+        }
+
+        std::cout << RESET << BOLD << "     \\ ------------ /" << std::endl
                   << std::endl
                   << std::endl;
-        if (choice == "-1")
-            std::cout << BOLD << RED;
-        std::cout << std::endl;
-        std::cout << "    Enter your choice:" << RESET << std::endl
+
+        if (invalid)
+            std::cout << BOLD << RED << "    Invalid choice, please try again." << RESET << std::endl
+                      << std::endl;
+
+        std::cout << "    Enter your choice:" << std::endl
                   << "            ";
         if (!std::getline(std::cin, choice))
             sigd();
-        if (choice != "1" && choice != "2" && choice != "0")
-            choice = "-1";
+
+        if (choice == "0")
+            return 0;
+
+        if (!choice.empty() && std::all_of(choice.begin(), choice.end(), [](unsigned char c) { return std::isdigit(c); }))
+        {
+            int selected = std::stoi(choice);
+            if (std::find(exams.begin(), exams.end(), selected) != exams.end())
+                return selected;
+        }
+
+        invalid = true;
     }
-    return (atoi(choice.c_str()));
 }

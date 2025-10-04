@@ -20,6 +20,8 @@
 #include <time.h>
 #include <string.h>
 #include <sstream>
+#include <algorithm>
+#include <cctype>
 #include <readline/readline.h>
 #include <readline/history.h>
 
@@ -100,6 +102,7 @@ private:
     void save_settings(void);
     int piscine_menu(void);
     int stud_or_swim(void);
+    std::vector<int> available_piscine_exams(void) const;
 
     bool setting_dse;
     bool setting_dcc;
